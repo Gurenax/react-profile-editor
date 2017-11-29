@@ -1,11 +1,8 @@
 import React from 'react'
 
 const Button = ({ title, onButtonClick }) => (
-  <button
-    onClick={onButtonClick} // Short hand for event => onButtonClick()
-  >
-    {title}
-  </button>
+  // Short hand for event => onButtonClick()
+  <button onClick={onButtonClick}>{title}</button>
 )
 
 export default Button
