@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import TextField from './components/TextField'
 import ShowProfile from './components/ShowProfile'
 import EditProfile from './components/EditProfile'
 import Button from './components/Button'
