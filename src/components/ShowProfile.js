@@ -5,10 +5,15 @@ const getFullName = (firstName, lastName) => {
 }
 
 const ShowProfile = ({
-  user
+  user,
+  visible
 }) => {
+  let className = ''
+  if(visible) className = 'visible'
+  else className = 'invisible'
+
   return (
-    <div>
+    <div className={ className }>
       <img src={user.profileImageURL} />
       <p>Name: {getFullName(user.firstName, user.lastName)}</p>
     </div>

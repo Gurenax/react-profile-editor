@@ -5,11 +5,15 @@ const EditProfile = ({
   user,
   onChangeFirstName,
   onChangeLastName,
-  onChangeImageUrl
+  onChangeImageUrl,
+  visible
 }) => {
-
+  let className = ''
+  if(visible) className = 'visible'
+  else className = 'invisible'
+  
   return (
-    <div>
+    <div className={ className }>
       <label>
         First name:
         {' '}

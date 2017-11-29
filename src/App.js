@@ -3,6 +3,7 @@ import './App.css';
 import TextField from './components/TextField'
 import ShowProfile from './components/ShowProfile'
 import EditProfile from './components/EditProfile'
+import Button from './components/Button'
 
 class App extends Component {
   state = {
@@ -10,7 +11,8 @@ class App extends Component {
       firstName: 'Perry',
       lastName: 'Perkins',
       profileImageURL: 'https://randomuser.me/api/portraits/men/1.jpg'
-    }
+    },
+    editMode: false
   }
   
   onChangeFirstName = (value) => {
@@ -56,15 +58,30 @@ class App extends Component {
     })
   }
 
+  onToggleMode = () => {
+    this.setState( (prevState) => {
+      const editMode = prevState.editMode
+      // editMode = !editMode
+      return {
+        editMode: !editMode
+      }
+    })
+  }
+
   render() {
     const user = this.state.user
+    const editMode = this.state.editMode
+    let buttonTitle = ''
+    if( editMode ) buttonTitle = 'Show Profile'
+    else buttonTitle = 'Edit Profile'
 
     return (
       <div className="App">
         <h1>React Profile Editor</h1>
-        <ShowProfile user={ user } />
+        <ShowProfile user={ user } visible={ !editMode } />
         <EditProfile
           user={ user }
+          visible={ editMode }
           onChangeFirstName={
             (value) => this.onChangeFirstName(value)
           }
@@ -74,6 +91,11 @@ class App extends Component {
           onChangeImageUrl={
             (value) => this.onChangeImageUrl(value)
           }
+        />
+        <br/>
+        <Button
+          title={ buttonTitle }
+          onButtonClick={ () => this.onToggleMode() }
         />
       </div>
     );
