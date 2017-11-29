@@ -4,6 +4,19 @@ import ShowProfile from './components/ShowProfile'
 import EditProfile from './components/EditProfile'
 import Button from './components/Button'
 
+const capitalizeFirstLetter = string => {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+const capitalizeFirstLetterOfEveryWord = string => {
+  return string
+    .split(' ')
+    .map(word => {
+      return capitalizeFirstLetter(word)
+    })
+    .join(' ')
+}
+
 class App extends Component {
   state = {
     user: {
@@ -67,7 +80,7 @@ class App extends Component {
     })
   }
 
-  getRandomPhoto = () => {
+  getRandomProfile = () => {
     console.log('Get random photo...')
     const url = 'https://randomuser.me/api/'
     fetch(url)
@@ -75,10 +88,18 @@ class App extends Component {
         return res.json()
       })
       .then(json => {
-        const profilePhoto = json.results[0].picture.large
+        const randomPhoto = json.results[0].picture.large
+        const randomFirstName = capitalizeFirstLetterOfEveryWord(
+          json.results[0].name.first
+        )
+        const randomLastName = capitalizeFirstLetterOfEveryWord(
+          json.results[0].name.last
+        )
         this.setState(prevState => {
           const user = prevState.user
-          user.profileImageURL = profilePhoto
+          user.profileImageURL = randomPhoto
+          user.firstName = randomFirstName
+          user.lastName = randomLastName
           return {
             user: user
           }
@@ -103,10 +124,13 @@ class App extends Component {
           onChangeImageUrl={value => this.onChangeImageUrl(value)}
         />
         <br />
-        <Button title={buttonTitle} onButtonClick={() => this.onToggleMode()} />
         <Button
-          title="Random Photo"
-          onButtonClick={() => this.getRandomPhoto()}
+          title={buttonTitle}
+          onButtonClick={this.onToggleMode} // Short hand for () => this.onToggleMode()
+        />
+        <Button
+          title="Random Profile"
+          onButtonClick={this.getRandomProfile} // Short hand for () => this.getRandomProfile()
         />
       </div>
     )
