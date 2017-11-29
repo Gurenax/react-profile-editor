@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import TextField from './components/TextField'
-
-const getFullName = (firstName, lastName) => {
-  return `${firstName} ${lastName}`
-}
+import ShowProfile from './components/ShowProfile'
+import EditProfile from './components/EditProfile'
 
 class App extends Component {
   state = {
@@ -14,7 +12,7 @@ class App extends Component {
       profileImageURL: 'https://randomuser.me/api/portraits/men/1.jpg'
     }
   }
-
+  
   onChangeFirstName = (value) => {
     // Get the <input> (an HTMLInputElement)
     // const input = value
@@ -56,50 +54,27 @@ class App extends Component {
         user: user
       }
     })
-  }  
-  
+  }
+
   render() {
     const user = this.state.user
 
     return (
       <div className="App">
         <h1>React Profile Editor</h1>
-        <img src={user.profileImageURL} />
-        <p>Name: {getFullName(user.firstName, user.lastName)}</p>
-
-        <label>
-          First name:
-          {' '}
-          <TextField
-            value={ user.firstName }
-            onTextChange={
-              (value) => this.onChangeFirstName(value)
-            }
-          />
-        </label>
-        <br/>
-        <label>
-          Last name:
-          {' '}
-          <TextField
-            value={ user.lastName }
-            onTextChange={
-              (value) => this.onChangeLastName(value)
-            }
-          />
-        </label>
-        <br/>
-        <label>
-          Image URL:
-          {' '}
-          <TextField
-            value={ user.profileImageURL }
-            onTextChange={
-              (value) => this.onChangeImageUrl(value)
-            }
-          />
-        </label>
-
+        <ShowProfile user={ user } />
+        <EditProfile
+          user={ user }
+          onChangeFirstName={
+            (value) => this.onChangeFirstName(value)
+          }
+          onChangeLastName={
+            (value) => this.onChangeLastName(value)
+          }
+          onChangeImageUrl={
+            (value) => this.onChangeImageUrl(value)
+          }
+        />
       </div>
     );
   }
