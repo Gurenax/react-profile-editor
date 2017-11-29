@@ -108,8 +108,9 @@ class App extends Component {
   }
 
   render() {
-    const user = this.state.user
-    const editMode = this.state.editMode
+    // const user = this.state.user
+    // const editMode = this.state.editMode
+    const { user, editMode } = this.state // Refactor: destructure state
     const buttonTitle = editMode ? 'Show Profile' : 'Edit Profile'
 
     return (
