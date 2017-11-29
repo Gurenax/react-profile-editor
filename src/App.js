@@ -68,6 +68,23 @@ class App extends Component {
     })
   }
 
+  getRandomPhoto = () => {
+    console.log('Get random photo...')
+    const url = 'https://randomuser.me/api/'
+    fetch(url).then( (res) => {
+      return res.json();
+    }).then( (json) => {
+      const profilePhoto = json.results[0].picture.large
+      this.setState( (prevState) => {
+        const user = prevState.user
+        user.profileImageURL = profilePhoto
+        return {
+          user: user
+        }
+      })
+    });
+  }
+
   render() {
     const user = this.state.user
     const editMode = this.state.editMode
@@ -96,6 +113,10 @@ class App extends Component {
         <Button
           title={ buttonTitle }
           onButtonClick={ () => this.onToggleMode() }
+        />
+        <Button
+          title='Random Photo'
+          onButtonClick={ () => this.getRandomPhoto() }
         />
       </div>
     );
