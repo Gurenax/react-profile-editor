@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import TextField from './components/TextField'
 
 const getFullName = (firstName, lastName) => {
   return `${firstName} ${lastName}`
@@ -14,22 +15,48 @@ class App extends Component {
     }
   }
 
-  onChangeFirstName = (event) => {
+  onChangeFirstName = (value) => {
     // Get the <input> (an HTMLInputElement)
-    const input = event.target
+    // const input = value
     // Get the current inputted text from the field
-    const newFirstName = input.value
+    // const newFirstName = value
     // Make changes to the state
     this.setState( (prevState) => {
       const user = prevState.user
       // Create copy of user with new first name
-      user.firstName = newFirstName
+      user.firstName = value
       return {
         // this.state.user will be updated
         user: user
       }
     })
   }
+
+  onChangeLastName = (value) => {
+    // Make changes to the state
+    this.setState( (prevState) => {
+      const user = prevState.user
+      // Create copy of user with new first name
+      user.lastName = value
+      return {
+        // this.state.user will be updated
+        user: user
+      }
+    })
+  }
+
+  onChangeImageUrl = (value) => {
+    // Make changes to the state
+    this.setState( (prevState) => {
+      const user = prevState.user
+      // Create copy of user with new first name
+      user.profileImageURL = value
+      return {
+        // this.state.user will be updated
+        user: user
+      }
+    })
+  }  
   
   render() {
     const user = this.state.user
@@ -43,11 +70,36 @@ class App extends Component {
         <label>
           First name:
           {' '}
-          <input
+          <TextField
             value={ user.firstName }
-            onChange={ this.onChangeFirstName }
-            />
+            onTextChange={
+              (value) => this.onChangeFirstName(value)
+            }
+          />
         </label>
+        <br/>
+        <label>
+          Last name:
+          {' '}
+          <TextField
+            value={ user.lastName }
+            onTextChange={
+              (value) => this.onChangeLastName(value)
+            }
+          />
+        </label>
+        <br/>
+        <label>
+          Image URL:
+          {' '}
+          <TextField
+            value={ user.profileImageURL }
+            onTextChange={
+              (value) => this.onChangeImageUrl(value)
+            }
+          />
+        </label>
+
       </div>
     );
   }
