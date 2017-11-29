@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    user: {
+      firstName: 'Perry',
+      lastName: 'Perkins',
+      profileImageURL: 'https://randomuser.me/api/portraits/men/10.jpg'
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>React Profile Editor</h1>
+        <img src="https://randomuser.me/api/portraits/men/10.jpg" />
+        <p>Name: Perry Perkins</p>
       </div>
     );
   }
