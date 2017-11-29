@@ -9,8 +9,7 @@ const EditProfile = ({
   visible
 }) => {
   let className = ''
-  if (visible) className = 'visible'
-  else className = 'invisible'
+  if (!visible) className = 'invisible'
 
   return (
     <div className={className}>

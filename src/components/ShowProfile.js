@@ -6,8 +6,7 @@ const getFullName = (firstName, lastName) => {
 
 const ShowProfile = ({ user, visible }) => {
   let className = ''
-  if (visible) className = 'visible'
-  else className = 'invisible'
+  if (!visible) className = 'invisible'
 
   return (
     <div className={className}>

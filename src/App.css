@@ -6,10 +6,6 @@ img {
   border-radius: 100%;
 }
 
-.visible {
-  display: block;
-}
-
 .invisible {
   display: none;
 }
