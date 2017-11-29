@@ -9,41 +9,32 @@ const EditProfile = ({
   visible
 }) => {
   let className = ''
-  if(visible) className = 'visible'
+  if (visible) className = 'visible'
   else className = 'invisible'
-  
+
   return (
-    <div className={ className }>
+    <div className={className}>
       <label>
-        First name:
-        {' '}
+        First name:{' '}
         <TextField
-          value={ user.firstName }
-          onTextChange={
-            (value) => onChangeFirstName(value)
-          }
+          value={user.firstName}
+          onTextChange={value => onChangeFirstName(value)}
         />
       </label>
-      <br/>
+      <br />
       <label>
-        Last name:
-        {' '}
+        Last name:{' '}
         <TextField
-          value={ user.lastName }
-          onTextChange={
-            (value) => onChangeLastName(value)
-          }
+          value={user.lastName}
+          onTextChange={value => onChangeLastName(value)}
         />
       </label>
-      <br/>
+      <br />
       <label>
-        Image URL:
-        {' '}
+        Image URL:{' '}
         <TextField
-          value={ user.profileImageURL }
-          onTextChange={
-            (value) => onChangeImageUrl(value)
-          }
+          value={user.profileImageURL}
+          onTextChange={value => onChangeImageUrl(value)}
         />
       </label>
     </div>
