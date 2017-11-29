@@ -89,9 +89,7 @@ class App extends Component {
   render() {
     const user = this.state.user
     const editMode = this.state.editMode
-    let buttonTitle = ''
-    if (editMode) buttonTitle = 'Show Profile'
-    else buttonTitle = 'Edit Profile'
+    const buttonTitle = editMode ? 'Show Profile' : 'Edit Profile'
 
     return (
       <div className="App">
