@@ -10,7 +10,7 @@ const ShowProfile = ({ user, visible }) => {
     return (
       <div>
         <img src={user.profileImageURL} alt="" />
-        <p>Name: {getFullName(user.firstName, user.lastName)}</p>
+        <h2>{getFullName(user.firstName, user.lastName)}</h2>
       </div>
     )
   }

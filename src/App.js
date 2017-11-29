@@ -119,9 +119,9 @@ class App extends Component {
         <EditProfile
           user={user}
           visible={editMode}
-          onChangeFirstName={value => this.onChangeFirstName(value)}
-          onChangeLastName={value => this.onChangeLastName(value)}
-          onChangeImageUrl={value => this.onChangeImageUrl(value)}
+          onChangeFirstName={this.onChangeFirstName} // Short hand for (value) => this.onChangeFirstName(value)
+          onChangeLastName={this.onChangeLastName} // Short hand for (value) => this.onChangeLastName(value)
+          onChangeImageUrl={this.onChangeImageUrl} // Short hand for (value) => this.onChangeImageUrl(value)
         />
         <br />
         <Button

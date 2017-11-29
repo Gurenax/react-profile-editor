@@ -16,7 +16,7 @@ const EditProfile = ({
           First name:{' '}
           <TextField
             value={user.firstName}
-            onTextChange={value => onChangeFirstName(value)}
+            onTextChange={onChangeFirstName} // Short hand for (value) => onChangeFirstName(value)
           />
         </label>
         <br />
@@ -24,7 +24,7 @@ const EditProfile = ({
           Last name:{' '}
           <TextField
             value={user.lastName}
-            onTextChange={value => onChangeLastName(value)}
+            onTextChange={onChangeLastName} // Short hand for (value) => onChangeLastName(value)
           />
         </label>
         <br />
@@ -32,7 +32,7 @@ const EditProfile = ({
           Image URL:{' '}
           <TextField
             value={user.profileImageURL}
-            onTextChange={value => onChangeImageUrl(value)}
+            onTextChange={onChangeImageUrl} // Short hand for (value) => onChangeImageUrl(value)
           />
         </label>
       </div>
